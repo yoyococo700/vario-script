@@ -1,8 +1,3 @@
---[[ Vario Gauges - Altimeter, Vertical Speed, max + Min Height script
-	by jenny gorton 
-	Version 1.2 - 13 July 2015
-	[url]http://rcsettings.com/index.php/viewdownload/13-lua-scripts/121-vario-telemetry-screen[/url]
-]]
 local Alt = "Alt"
 local time
 local index=0
@@ -44,17 +39,6 @@ local function deriv(dt)
 	return ((tabV[MAXPOINTS-1]-tabV[0])/(2*dt/100))
 end
 
-local function afficheTab()
-	local x = 10
-	local y = 10
-	for i=0,MAXPOINTS do
-		lcd.drawNumber(x+10*i,y,tabV[i],0)
-	end
-	for i=0,MAXPOINTSA do
-		lcd.drawNumber(x+10*i,y+10,tab[i],0)
-	end
-	
-end
 
 local function background()
 	time = getTime()
@@ -112,26 +96,26 @@ local function run(event)
 		indicatedSpeed=Vspeed
 	end
 -- 
-	-- local lenghtIndicator = 21
-	-- angle = math.rad((indicatedSpeed*17)-180)
-	-- x2 = lenghtIndicator * math.cos(angle) + x1 
-	-- y2 = lenghtIndicator * math.sin(angle) + y1 
-	-- lcd.drawLine(x1, y1, x2, y2, SOLID, 0)--GREY_DEFAULT)
+	local lenghtIndicator = 21
+	angle = math.rad((indicatedSpeed*17)-180)
+	x2 = lenghtIndicator * math.cos(angle) + x1 
+	y2 = lenghtIndicator * math.sin(angle) + y1 
+	lcd.drawLine(x1, y1, x2, y2, SOLID, 0)--GREY_DEFAULT)
 
-	-- --draw altitude indication
-	-- lcd.drawRectangle(62,2,65,30,0)
-	-- lcd.drawText(64, 3, "Alt:" ..round(CurrentAlt,2).."m", MIDSIZE)
-	-- lcd.drawText(64, 18, "Max:"..round(getValue('Alt+'),2), 0)
+	--draw altitude indication
+	lcd.drawRectangle(62,2,65,30,0)
+	lcd.drawText(64, 3, "Alt:" ..round(CurrentAlt,2).."m", MIDSIZE)
+	lcd.drawText(64, 18, "Max:"..round(getValue('Alt+'),2), 0)
 
 
-	-- --draw battery indication
-	-- lcd.drawRectangle(62,34,65,30,0)
-	-- lcd.drawText(64, 36, "Voltage", 0)
-	-- lcd.drawText(64, 50, getValue('A3').. "V", MIDSIZE)
+	--draw battery indication
+	lcd.drawRectangle(62,34,65,30,0)
+	lcd.drawText(64, 36, "Voltage", 0)
+	lcd.drawText(64, 50, getValue('A3').. "V", MIDSIZE)
 
-	-- lcd.drawText(35, 28, round(getValue('varo'),2), MIDSIZE)
+	lcd.drawText(35, 28, round(getValue('varo'),2), MIDSIZE)
 
-	afficheTab()
+	
 
 end
 
