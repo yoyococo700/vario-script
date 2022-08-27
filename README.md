@@ -3,7 +3,7 @@ Simple script to add a vario using the Flysky CAT-01 sensor and the Jumper TX12
 
 # Install
 ## On the SD card
-Put the script into SCRIPTS/TELEMETRY folder of your SD card
+Copy the vario.lua into the SCRIPTS/TELEMETRY folder of your SD card
 ## On the Jumper TX12
 - Go to your model and select it
 - go to the "Display" page and change "None" to "script"
